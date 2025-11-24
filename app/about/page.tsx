@@ -4,11 +4,11 @@ import Footer from "../components/Footer";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-[#800020]">
+    <div className="min-h-screen bg-[#600015]">
       <Navigation />
       
       {/* About Us Section */}
-      <section className="bg-[#006400] py-20">
+      <section className="bg-[#004d00] py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             {/* Image on Left */}

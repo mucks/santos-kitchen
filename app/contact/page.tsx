@@ -4,11 +4,11 @@ import Footer from "../components/Footer";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-[#800020]">
+    <div className="min-h-screen bg-[#600015]">
       <Navigation />
       
       {/* Contact Section */}
-      <section className="bg-[#006400] py-20">
+      <section className="bg-[#004d00] py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             {/* Image on Left */}
@@ -123,7 +123,7 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="bg-white text-[#006400] px-8 py-3 rounded font-sans font-semibold hover:bg-gray-100 transition-colors"
+                  className="bg-white text-[#004d00] px-8 py-3 rounded font-sans font-semibold hover:bg-gray-100 transition-colors"
                 >
                   Submit
                 </button>

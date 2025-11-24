@@ -9,7 +9,7 @@ export default function Navigation() {
   return (
     <>
       {/* Hero Section with Logo and Title */}
-      <section className="bg-[#800020] py-16 text-center">
+      <section className="bg-[#600015] py-16 text-center">
         <div className="container mx-auto px-4">
           {/* Logo */}
           <div className="mb-6 flex justify-center">
@@ -37,7 +37,7 @@ export default function Navigation() {
           <nav className="flex justify-center gap-4 flex-wrap">
             <Link 
               href="/" 
-              className={`bg-[#006400] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#004d00] transition-colors ${
+              className={`bg-[#004d00] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#003d00] transition-colors ${
                 pathname === "/" ? "border-2 border-yellow-400" : "border border-white"
               }`}
             >
@@ -45,7 +45,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/menu" 
-              className={`bg-[#006400] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#004d00] transition-colors ${
+              className={`bg-[#004d00] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#003d00] transition-colors ${
                 pathname === "/menu" ? "border-2 border-yellow-400" : "border border-white"
               }`}
             >
@@ -53,7 +53,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/about" 
-              className={`bg-[#006400] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#004d00] transition-colors ${
+              className={`bg-[#004d00] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#003d00] transition-colors ${
                 pathname === "/about" ? "border-2 border-yellow-400" : "border border-white"
               }`}
             >
@@ -61,7 +61,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/contact" 
-              className={`bg-[#006400] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#004d00] transition-colors ${
+              className={`bg-[#004d00] text-white px-6 py-3 font-sans font-semibold text-sm hover:bg-[#003d00] transition-colors ${
                 pathname === "/contact" ? "border-2 border-yellow-400" : "border border-white"
               }`}
             >

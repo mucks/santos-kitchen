@@ -4,11 +4,11 @@ import Footer from "../components/Footer";
 
 export default function Menu() {
   return (
-    <div className="min-h-screen bg-[#800020]">
+    <div className="min-h-screen bg-[#600015]">
       <Navigation />
       
       {/* Menu Section */}
-      <section className="bg-[#006400] py-20">
+      <section className="bg-[#004d00] py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Current Menu Placeholder */}
@@ -16,7 +16,7 @@ export default function Menu() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center font-sans">
                 Current Menu
               </h2>
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-[#800020] to-[#600015] flex items-center justify-center border-2 border-yellow-400">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-2xl bg-gradient-to-br from-[#600015] to-[#400010] flex items-center justify-center border-2 border-yellow-400">
                 <div className="text-center">
                   <div className="text-yellow-400 text-5xl mb-4" style={{ fontFamily: 'var(--font-dancing-script), cursive' }}>
                     Santo&apos;s Kitchen
