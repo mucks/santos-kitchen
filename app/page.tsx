@@ -8,34 +8,53 @@ export default function Home() {
     <div className="min-h-screen bg-[#800020]">
       <Navigation />
       
-      {/* Home Content Section - Two Column Layout */}
+      {/* Home Content Section - Grid Layout */}
       <section className="bg-[#800020] py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-            {/* Left Column - Large Intro Image */}
-            <div className="relative w-full">
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/intro.jpeg"
-                  alt="Santo's Kitchen Introduction"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+            {/* Left Column - Top Image */}
+            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl">
+              <Image
+                src="/images/intro.jpeg"
+                alt="Santo's Kitchen Introduction"
+                width={800}
+                height={1000}
+                className="w-full h-auto object-contain"
+                priority
+              />
             </div>
 
-            {/* Right Column - Food Gallery (3 images stacked) */}
-            <div className="flex flex-col gap-6">
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-500 font-sans">Placeholder</span>
-              </div>
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-500 font-sans">Placeholder</span>
-              </div>
-              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-500 font-sans">Placeholder</span>
-              </div>
+            {/* Right Column - Top Image */}
+            <div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/intro-2.jpeg"
+                alt="Santo's Kitchen food display"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Left Column - Bottom Image */}
+            <div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/intro-3.jpeg"
+                alt="Santo's Kitchen food preparation"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* Right Column - Bottom Image */}
+            <div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/intro-4.jpeg"
+                alt="Santo's Kitchen food serving"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>
@@ -45,7 +64,7 @@ export default function Home() {
       <section className="bg-[#006400] py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-white mb-12 text-center font-sans">Watch Us Cook</h2>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="rounded-lg overflow-hidden shadow-lg bg-black">
               <VideoWithThumbnail
                 src="/videos/video-1.mp4"
@@ -61,6 +80,12 @@ export default function Home() {
             <div className="rounded-lg overflow-hidden shadow-lg bg-black">
               <VideoWithThumbnail
                 src="/videos/video-3.mp4"
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg bg-black">
+              <VideoWithThumbnail
+                src="/videos/video-4.mp4"
                 className="w-full h-auto"
               />
             </div>

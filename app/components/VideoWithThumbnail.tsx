@@ -20,32 +20,56 @@ export default function VideoWithThumbnail({ src, className = "" }: VideoWithThu
     if (!video || !canvas || thumbnailGenerated) return;
 
     const generateThumbnail = () => {
-      if (video.readyState >= 2) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const ctx = canvas.getContext("2d");
-        if (ctx) {
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          const dataUrl = canvas.toDataURL("image/jpeg");
-          setThumbnail(dataUrl);
-          setThumbnailGenerated(true);
+      try {
+        if (video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0) {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL("image/jpeg", 0.8);
+            setThumbnail(dataUrl);
+            setThumbnailGenerated(true);
+          }
         }
+      } catch (error) {
+        console.error("Error generating thumbnail:", error);
       }
     };
 
-    video.addEventListener("loadedmetadata", () => {
-      video.currentTime = 0.1; // Seek to a small time to get a frame
-    });
+    const handleLoadedMetadata = () => {
+      if (video.videoWidth > 0 && video.videoHeight > 0) {
+        video.currentTime = 0.1; // Seek to a small time to get a frame
+      }
+    };
 
-    video.addEventListener("seeked", generateThumbnail);
-
-    // Fallback: try to generate after video loads
-    if (video.readyState >= 2) {
+    const handleSeeked = () => {
       generateThumbnail();
+    };
+
+    const handleLoadedData = () => {
+      if (!thumbnailGenerated) {
+        generateThumbnail();
+      }
+    };
+
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("seeked", handleSeeked);
+    video.addEventListener("loadeddata", handleLoadedData);
+
+    // Try to generate immediately if video is already loaded
+    if (video.readyState >= 2) {
+      setTimeout(() => {
+        if (!thumbnailGenerated) {
+          generateThumbnail();
+        }
+      }, 100);
     }
 
     return () => {
-      video.removeEventListener("seeked", generateThumbnail);
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("seeked", handleSeeked);
+      video.removeEventListener("loadeddata", handleLoadedData);
     };
   }, [thumbnailGenerated]);
 
@@ -59,6 +83,7 @@ export default function VideoWithThumbnail({ src, className = "" }: VideoWithThu
         controls
         className={className}
         preload="metadata"
+        crossOrigin="anonymous"
       >
         Your browser does not support the video tag.
       </video>
