@@ -73,6 +73,42 @@ export default function VideoWithThumbnail({ src, className = "" }: VideoWithThu
     };
   }, [thumbnailGenerated]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Ensure video is muted
+      video.muted = true;
+      video.volume = 0;
+      video.loop = true;
+      video.playsInline = true;
+      
+      // Try to play when video can play
+      const tryPlay = () => {
+        video.muted = true;
+        video.volume = 0;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay was prevented, ignore
+          });
+        }
+      };
+
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+      
+      // Try immediately if already loaded
+      if (video.readyState >= 2) {
+        tryPlay();
+      }
+
+      return () => {
+        video.removeEventListener('loadeddata', tryPlay);
+        video.removeEventListener('canplay', tryPlay);
+      };
+    }
+  }, []);
+
   return (
     <>
       <canvas ref={canvasRef} className="hidden" />
@@ -80,10 +116,14 @@ export default function VideoWithThumbnail({ src, className = "" }: VideoWithThu
         ref={videoRef}
         src={src}
         poster={thumbnail || undefined}
-        controls
         className={className}
-        preload="metadata"
+        preload="auto"
         crossOrigin="anonymous"
+        autoPlay
+        loop
+        muted
+        playsInline
+        volume={0}
       >
         Your browser does not support the video tag.
       </video>
